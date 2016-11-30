@@ -25,9 +25,17 @@ class CreateStationsTable extends Migration
             $table->integer('company_id')->unsigned();
             $table->integer('city_id')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
 
-            $table->foreign('company_id')->references('id')->on('companies');
-            $table->foreign('city_id')->references('id')->on('cities');
+            $table->foreign('company_id')
+                ->references('id')
+                ->on('companies')
+                ->onDelete('cascade');
+
+            $table->foreign('city_id')
+                ->references('id')
+                ->on('cities')
+                ->onDelete('cascade');
         });
     }
 

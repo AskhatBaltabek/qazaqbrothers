@@ -4,10 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class City extends Model
+class City extends BaseModel
 {
-    protected $guarded = [];
-    
     public $timestamps = false;
 
     public function region()

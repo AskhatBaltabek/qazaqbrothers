@@ -4,10 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Company extends Model
+class Company extends BaseModel
 {
-    protected $guarded = [];
-
     public $inputs = [
         'title' => ['type' => 'text'],
         'description' => ['type' => 'textarea']

@@ -20,8 +20,15 @@ class CreateCompanyFuelTable extends Migration
             $table->float('price')->unsigned()->nullable();
             $table->timestamps();
 
-            $table->foreign('fuel_id')->references('id')->on('fuels');
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('fuel_id')
+                ->references('id')
+                ->on('fuels')
+                ->onDelete('cascade');
+
+            $table->foreign('company_id')
+                ->references('id')
+                ->on('companies')
+                ->onDelete('cascade');
         });
     }
 

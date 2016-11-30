@@ -59,6 +59,7 @@
           <small>{{ isset($page_action) ? trans($page_action) : '' }}</small>
         <div class="pull-right">
           @if(isset($model_name) && $model_name)
+            <a href="{{ route('admin:getModelAction', [$model_name, 'trashed']) }}" class="btn btn-default"> Корзина </a>
             <a href="{{ route('admin:getModelAction', [$model_name, 'create']) }}" class="btn btn-success">Добавить {{ trans($model_name) }}</a>
           @endif
         </div>

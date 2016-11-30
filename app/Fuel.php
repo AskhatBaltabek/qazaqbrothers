@@ -4,10 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Fuel extends Model
+class Fuel extends BaseModel
 {
-    protected $guarded = [];
-    
     public $timestamps = false;
 
     public function companies ()

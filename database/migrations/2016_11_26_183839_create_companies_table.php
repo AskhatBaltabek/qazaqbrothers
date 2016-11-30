@@ -20,6 +20,7 @@ class CreateCompaniesTable extends Migration
             $table->text('email')->nullable();
             $table->text('phone')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

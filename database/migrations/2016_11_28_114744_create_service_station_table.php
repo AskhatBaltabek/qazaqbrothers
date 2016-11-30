@@ -20,8 +20,15 @@ class CreateServiceStationTable extends Migration
             $table->float('price')->unsigned()->nullable();
             $table->timestamps();
 
-            $table->foreign('service_id')->references('id')->on('services');
-            $table->foreign('station_id')->references('id')->on('stations');
+            $table->foreign('service_id')
+                ->references('id')
+                ->on('services')
+                ->onDelete('cascade');
+
+            $table->foreign('station_id')
+                ->references('id')
+                ->on('stations')
+                ->onDelete('cascade');
         });
     }
 

@@ -9,7 +9,15 @@
     @if (! $data->isEmpty() )
       <?php
       $model_columns = $data[0]['attributes'];
-      $row_actions = ['show', 'edit', 'delete'];
+
+
+      if (isset($trashed) && $trashed) {
+        $row_actions = ['trashed', 'restore', 'force_delete'];
+      } else {
+        $row_actions = ['show', 'edit', 'delete'];
+      }
+
+      
       ?>
       <table class="table table-bordered table-striped model-list-table">
         @include('admin.blocks.table.header')

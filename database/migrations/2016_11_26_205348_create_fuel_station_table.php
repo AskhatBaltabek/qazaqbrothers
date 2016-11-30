@@ -20,8 +20,15 @@ class CreateFuelStationTable extends Migration
             $table->float('price')->unsigned()->nullable();
             $table->timestamps();
 
-            $table->foreign('fuel_id')->references('id')->on('fuels');
-            $table->foreign('station_id')->references('id')->on('stations');
+            $table->foreign('fuel_id')
+                ->references('id')
+                ->on('fuels')
+                ->onDelete('cascade');
+
+            $table->foreign('station_id')
+                ->references('id')
+                ->on('stations')
+                ->onDelete('cascade');
         });
     }
 

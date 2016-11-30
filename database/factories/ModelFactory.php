@@ -34,10 +34,11 @@ $factory->define(App\Company::class, function (Faker\Generator $faker) {
 $factory->define(App\Station::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->name,
+        'description' => $faker->text,
         'lat' => $faker->latitude(45, 50),
         'long' => $faker->longitude(50, 80),
         'company_id' => mt_rand(1, 10),
-        'city_id' => mt_rand(1, 10),
+        'city_id' => mt_rand(1, 85),
         'phone' => $faker->phoneNumber,
         'address' => $faker->streetAddress,
         'email' => $faker->email

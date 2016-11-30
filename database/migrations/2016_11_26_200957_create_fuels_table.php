@@ -16,6 +16,7 @@ class CreateFuelsTable extends Migration
         Schema::create('fuels', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title')->required();
+            $table->softDeletes();
         });
     }
 

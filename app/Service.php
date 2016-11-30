@@ -4,10 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Service extends Model
+class Service extends BaseModel
 {
-    protected $guarded = [];
-    
     public $timestamps = false;
 
     public function stations ()
