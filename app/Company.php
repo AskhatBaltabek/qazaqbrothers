@@ -8,7 +8,9 @@ class Company extends BaseModel
 {
     public $inputs = [
         'title' => ['type' => 'text'],
-        'description' => ['type' => 'textarea']
+        'description' => ['type' => 'textarea'],
+        'email' => ['type' => 'text'],
+        'phone' => ['type' => 'text'],
     ];
 
     public function stations()

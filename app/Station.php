@@ -6,14 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Station extends BaseModel
 {
-    public $inputs = [
+    public static $inputs = [
         'title' => ['type' => 'text'],
         'description' => ['type' => 'textarea'],
         'lat' => ['type' => 'text'],
         'long' => ['type' => 'text'],
         'address' => ['type' => 'text'],
-        'company_id' => ['type' => 'number'],
-        'city_id' => ['type' => 'number']
+        'email' => ['type' => 'text'],
+        'phone' => ['type' => 'text']
+    ];
+
+    public static $relation_inputs = [
+        'company' => 'one',
+        'city' => 'one',
+        'fuels' => 'many',
     ];
     
     public function fuels ()

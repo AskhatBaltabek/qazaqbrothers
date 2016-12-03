@@ -8,8 +8,13 @@
   <div class="box-body">
     @if (! $data->isEmpty() )
       <?php
-      $model_columns = $data[0]['attributes'];
+      if (isset($data[0]::$inputs)) {
+        $model_columns = $data[0]::$inputs;
+      } else {
+        $model_columns = $data[0]['attributes'];
+      }
 
+      $relation_inputs = $data[0]['relations'];
 
       if (isset($trashed) && $trashed) {
         $row_actions = ['trashed', 'restore', 'force_delete'];
@@ -23,7 +28,10 @@
         @include('admin.blocks.table.header')
         <tbody>
           @foreach($data as $val )
-            <? $row = $val['attributes'] ?>
+            <?php
+              $row = $val['attributes'];
+              $relation_inputs = $val['relations'];
+            ?>
             @include('admin.blocks.table.row')
           @endforeach
         </tbody>

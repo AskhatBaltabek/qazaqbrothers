@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 class BaseController extends Controller
 {
     protected $accessable_models = [
+        'Company',
+        'Station',
         'Region',
         'City',
-        'Station',
         'Fuel',
-        'Company',
         'Service'
     ];
 

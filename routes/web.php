@@ -20,5 +20,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('{model_name}/{action?}/{id?}', 'AdminController@getModelAction')
             ->name('admin:getModelAction')
             ->where('id', '[0-9]+');
-});
 
+    Route::post('{model_name}/{action?}/{id?}', 'AdminController@postModelAction')
+            ->name('admin:postModelAction')
+            ->where('id', '[0-9]+');
+});

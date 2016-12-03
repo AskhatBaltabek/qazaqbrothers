@@ -8,6 +8,10 @@ class Fuel extends BaseModel
 {
     public $timestamps = false;
 
+    public $inputs = [
+        'title' => ['type' => 'text']
+    ];
+
     public function companies ()
     {
         return $this->belongsToMany('App\Company')->withPivot('price')->withTimestamps();

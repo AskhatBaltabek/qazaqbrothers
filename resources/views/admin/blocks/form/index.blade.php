@@ -4,39 +4,37 @@
   </div>
   <!-- /.box-header -->
   <!-- form start -->
-  <form class="form-horizontal" method="POST">
+  <form class="form-horizontal" method="POST" action="{{ route('admin:postModelAction', [$model_name, $page_action, $data->id]) }}">
+    {{ csrf_field() }}
     <div class="box-body">
-      @if (isset($data))
+      @if ($data->inputs)
 
-        @if ($data->inputs)
+        @foreach($data->inputs as $input_name => $input_options)
+          <? 
+          $input_type = $input_options['type'];
+          $label = $input_name; 
+          $value = isset($data['attributes'][$input_name]) 
+                    ? $data['attributes'][$input_name] 
+                    : '';
+          ?>
 
-          @foreach($data->inputs as $input_name => $input_options)
-            <? 
-            $input_type = $input_options['type'];
-            $label = $input_name; 
-            $value = isset($data['attributes'][$input_name]) 
-                      ? $data['attributes'][$input_name] 
-                      : '';
-            ?>
+          @if (View::exists('admin.blocks.form.inputs.' . $input_type)) 
 
-            @if (View::exists('admin.blocks.form.inputs.' . $input_type)) 
-
-              @include('admin.blocks.form.inputs.' . $input_type)
-            @else
-              @include('admin.blocks.form.inputs.text')
-            @endif
-          @endforeach
-
-        @else
-
-          @foreach($data['attributes'] as $label => $value)
-            <? if ($label == 'id') continue; ?>
+            @include('admin.blocks.form.inputs.' . $input_type)
+          @else
             @include('admin.blocks.form.inputs.text')
-          @endforeach
+          @endif
+        @endforeach
 
-        @endif
+      @else
+
+        @foreach($data['attributes'] as $label => $value)
+          <? if ($label == 'id') continue; ?>
+          @include('admin.blocks.form.inputs.text')
+        @endforeach
 
       @endif
+
     </div>
     <!-- /.box-body -->
     <div class="box-footer">

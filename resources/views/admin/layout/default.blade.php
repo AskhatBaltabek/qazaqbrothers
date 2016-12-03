@@ -60,7 +60,7 @@
         <div class="pull-right">
           @if(isset($model_name) && $model_name)
             <a href="{{ route('admin:getModelAction', [$model_name, 'trashed']) }}" class="btn btn-default"> Корзина </a>
-            <a href="{{ route('admin:getModelAction', [$model_name, 'create']) }}" class="btn btn-success">Добавить {{ trans($model_name) }}</a>
+            <a href="{{ route('admin:getModelAction', [$model_name, 'create']) }}" class="btn btn-success">Добавить {{ trans('model.'.ucfirst($model_name)) }}</a>
           @endif
         </div>
         </h1>
@@ -91,8 +91,8 @@
 <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
 
 <!-- DataTables -->
-<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
 
 <!-- SlimScroll -->
 <script src="{{ asset('plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
